@@ -10,108 +10,114 @@
                                     <div class="col-lg-9">
                                         <div CLASS="card-header bg-secondary text-white">General Details</div>
                                         <section class="content-body p-xl-4">
-                                            @foreach(config('app.languages') as $lang)
-                                                <div class="row mb-4">
-                                                    <label class="col-lg-3 col-form-label"
-                                                           for="name">@lang('form-labels.product-name') {{$lang}} </label>
-                                                    <div class="col-lg-9">
-                                                        <input wire:model.defer="names.{{$lang}}"
-                                                               class="form-control @error('name') error-input-border @enderror"
-                                                               name="{{$lang}}" id="name_{{$lang}}" type="text"
-                                                               placeholder="Type here">
-                                                    </div>
-                                                    @foreach ($errors->get($lang) as $message)
-                                                        <span wire:loading.remove
-                                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            @foreach(config('app.languages') as $lang)
-                                                <div class="row mb-4">
-                                                    <label class="col-lg-3 col-form-label"
-                                                           for="description">@lang('form-labels.product-description') {{$lang}}</label>
-                                                    <div class="col-lg-9">
-                                                    <textarea wire:model.defer="describes.{{$lang}}"
-                                                              class="form-control @error('description') error-input-border @enderror"
-                                                              placeholder="Type here" rows="4"
-                                                              name="{{$lang}}" id="description_{{$lang}}"></textarea>
-                                                    </div>
-                                                    @foreach ($errors->get('description') as $message)
-                                                        <span wire:loading.remove
-                                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                            <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="brand_id">@lang('form-labels.product-brand')</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">Choose
-                                                        Brand</small>
-                                                    <select
-                                                        class="form-select @error('brand_id') error-input-border @enderror"
-                                                        name="brand_id" id="brand_id"
-                                                        wire:model.defer="brand_id">
 
-                                                        <option>choose parent category</option>
-                                                        @foreach($brands as $brand)
-                                                            <option
-                                                                value="{{$brand->id}}">
-                                                                {{$brand->local->name}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @foreach($errors->get('brand_id') as $message)
-                                                        <span wire:loading.remove
-                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                    @endforeach
-                                                </div>
-                                            </div>
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="code">@lang('form-labels.product-code')</label>
-                                                <div class="col-lg-4">
-                                                    <input wire:model.defer="code" name="code" id="code"
-                                                           class="form-control @error('code') error-input-border @enderror"
-                                                           type="number"
-                                                           placeholder="012345678">
+                                                <label class="col-lg-3 col-form-label" for="name">عنوان اقامتگاه</label>
+                                                <div class="col-lg-9">
+                                                    <input wire:model.defer="name"
+                                                           class="form-control @error('name') error-input-border @enderror"
+                                                           name="name" id="name" type="text" placeholder="Type here">
                                                 </div>
-                                                @foreach($errors->get('code') as $message)
+                                                @foreach ($errors->get('name') as $message)
+                                                    <span wire:loading.remove
+                                                          class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                                @endforeach
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label" for="wc_en">سرویس بهداشتی
+                                                    فرنگی</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="wc_en" name="wc_en" id="wc_en"
+                                                           class="form-control @error('wc_en') error-input-border @enderror"
+                                                           type="number">
+                                                </div>
+                                                @foreach($errors->get('wc_en') as $message)
                                                     <span wire:loading.remove
                                                           class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                                 @endforeach
                                             </div>
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="price">@lang('form-labels.product-price')</label>
+                                                <label class="col-lg-3 col-form-label" for="wc_fa">سرویس بهداشتی
+                                                    ایرانی</label>
                                                 <div class="col-lg-4">
-                                                    <input wire:model.defer="price"
-                                                           name="price" id="price"
+                                                    <input wire:model.defer="wc_fa" name="wc_fa" id="wc_fa"
+                                                           class="form-control @error('wc_fa') error-input-border @enderror"
+                                                           type="number">
+                                                </div>
+                                                @foreach($errors->get('wc_fa') as $message)
+                                                    <span wire:loading.remove
+                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label" for="bath">حمام</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="bath" name="bath" id="bath"
+                                                           class="form-control @error('bath') error-input-border @enderror"
+                                                           type="number">
+                                                </div>
+                                                @foreach($errors->get('bath') as $message)
+                                                    <span wire:loading.remove
+                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label" for="single_bed">تخت خواب یک
+                                                    نفره</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="single_bed" name="single_bed"
+                                                           id="single_bed"
+                                                           class="form-control @error('single_bed') error-input-border @enderror"
+                                                           type="number">
+                                                </div>
+                                                @foreach($errors->get('single_bed') as $message)
+                                                    <span wire:loading.remove
+                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label" for="double_bed">تخت خواب دو
+                                                    نفره</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="double_bed" name="double_bed"
+                                                           id="double_bed"
+                                                           class="form-control @error('double_bed') error-input-border @enderror"
+                                                           type="number">
+                                                </div>
+                                                @foreach($errors->get('double_bed') as $message)
+                                                    <span wire:loading.remove
+                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label" for="capacity">ظرفیت</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="capacity" name="capacity" id="capacity"
+                                                           class="form-control @error('capacity') error-input-border @enderror"
+                                                           type="number">
+                                                </div>
+                                                @foreach($errors->get('capacity') as $message)
+                                                    <span wire:loading.remove
+                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label" for="price">قیمت</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="price" name="price" id="price"
                                                            class="form-control @error('price') error-input-border @enderror"
-                                                           type="number"
-                                                           placeholder="012345678">
+                                                           type="number">
                                                 </div>
                                                 @foreach($errors->get('price') as $message)
                                                     <span wire:loading.remove
                                                           class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                                 @endforeach
                                             </div>
+
                                             <div class="row mb-4">
                                                 <label class="col-lg-3 col-form-label"
-                                                       for="quantity">@lang('form-labels.product-quantity')</label>
-                                                <div class="col-lg-4">
-                                                    <input wire:model.defer="quantity" name="quantity" id="quantity"
-                                                           class="form-control @error('quantity') error-input-border @enderror"
-                                                           type="number"
-                                                           placeholder="012345678">
-                                                </div>
-                                                @foreach($errors->get('quantity') as $message)
-                                                    <span wire:loading.remove
-                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                @endforeach
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="discount">@lang('form-labels.product-discount')</label>
+                                                       for="discount">تخفیف</label>
                                                 <div class="col-lg-4">
                                                     <input wire:model.defer="discount" name="discount" id="discount"
                                                            class="form-control @error('discount') error-input-border @enderror"
@@ -125,23 +131,32 @@
                                             </div>
                                             <div class="row mb-4">
                                                 <label class="col-lg-3 col-form-label"
-                                                       for="status">@lang('form-labels.product-status')</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">Choose
-                                                        status</small>
+                                                       for="description">توضیحات</label>
+                                                <div class="col-lg-4">
+                                                    <input wire:model.defer="description" name="description"
+                                                           id="description"
+                                                           class="form-control @error('description') error-input-border @enderror"
+                                                           type="text"
+                                                           placeholder="012345678">
+                                                </div>
+                                                @foreach($errors->get('description') as $message)
+                                                    <span wire:loading.remove
+                                                          class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                @endforeach
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-lg-3 col-form-label"
+                                                       for="status">وضعیت اقامتگاه</label>
+                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">انتخاب وضعیت</small>
                                                     <select
                                                         class="form-select @error('status') error-input-border @enderror"
-                                                        name="status" id="status"
-                                                        wire:model.defer="status">
-
-                                                        <option>choose parent category</option>
-                                                        <option
-                                                            value="1">@lang('form-labels.product-enable-this-product')</option>
-                                                        <option
-                                                            value="2">@lang('form-labels.product-disable-this-product')</option>
+                                                        name="status" id="status" wire:model.defer="status">
+                                                        <option>انتخاب</option>
+                                                        <option value="1">نمایش اقامتگاه</option>
+                                                        <option value="2">عدم نمایش اقامتگاه</option>
                                                     </select>
                                                     @foreach($errors->get('status') as $message)
-                                                        <span wire:loading.remove
-                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                        <span wire:loading.remove class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -151,27 +166,29 @@
                                 @endif
                                 @if($currentStep==2)
                                     <div class="col-lg-9">
-                                        <div CLASS="card-header bg-secondary text-white">Category Details</div>
+                                        <div CLASS="card-header bg-secondary text-white">جزییات محیط و دسته بندی
+                                            اقامتگاه
+                                        </div>
                                         <section class="content-body p-xl-4">
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="size_id">@lang('form-labels.product-size')</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">Choose
-                                                        Size</small>
+                                                <label class="col-lg-3 col-form-label" for="category_id">محیط
+                                                    اقامتگاه</label>
+                                                <div class="col-lg-4"><small
+                                                        class="text-muted font-sm mb-10">انتخاب</small>
                                                     <select
-                                                        class="form-select @error('size_id') error-input-border @enderror"
-                                                        name="size_id" id="size_id"
-                                                        wire:model.defer="size_id">
+                                                        class="form-select @error('environment_id') error-input-border @enderror"
+                                                        name="environment_id" id="environment_id"
+                                                        wire:model.defer="environment_id">
 
                                                         <option>choose parent category</option>
-                                                        @foreach($sizes as $size)
+                                                        @foreach($environments as $environment)
                                                             <option
-                                                                value="{{$size->id}}">
-                                                                {{@$size->size->name}}
+                                                                value="{{$environment->id}}">
+                                                                {{@$environment->environment->name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
-                                                    @foreach($errors->get('size_id') as $message)
+                                                    @foreach($errors->get('environment_id') as $message)
                                                         <span wire:loading.remove
                                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                                     @endforeach
@@ -179,33 +196,9 @@
                                             </div>
                                             <div class="row mb-4">
                                                 <label class="col-lg-3 col-form-label"
-                                                       for="color_id">@lang('form-labels.product-color')</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">Choose
-                                                        Color</small>
-                                                    <select
-                                                        class="form-select @error('color_id') error-input-border @enderror"
-                                                        name="color_id" id="color_id"
-                                                        wire:model.defer="color_id">
-
-                                                        <option>choose parent category</option>
-                                                        @foreach($colors as $color)
-                                                            <option
-                                                                value="{{$color->id}}">
-                                                                {{@$color->color->name}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @foreach($errors->get('color_id') as $message)
-                                                        <span wire:loading.remove
-                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="category_id">@lang('form-labels.product-category')</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">Choose
-                                                        Category</small>
+                                                       for="category_id">دسته بندی اقامتگاه</label>
+                                                <div class="col-lg-4"><small
+                                                        class="text-muted font-sm mb-10">انتخاب</small>
                                                     <select
                                                         class="form-select @error('category_id') error-input-border @enderror"
                                                         name="category_id" id="category_id"
@@ -215,7 +208,7 @@
                                                         @foreach($categories as $category)
                                                             <option
                                                                 value="{{$category->id}}">
-                                                                {{@$category->local->name}}
+                                                                {{@$category->category->name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -226,36 +219,12 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="currency_id">@lang('form-labels.product-currency')</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">Choose
-                                                        Currency</small>
-                                                    <select
-                                                        class="form-select @error('currency_id') error-input-border @enderror"
-                                                        name="currency_id" id="currency_id"
-                                                        wire:model.defer="currency_id">
-
-                                                        <option>choose parent category</option>
-                                                        @foreach($currencies as $currency)
-                                                            <option
-                                                                value="{{$currency->id}}">
-                                                                {{@$currency->local->name}}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    @foreach($errors->get('currency_id') as $message)
-                                                        <span wire:loading.remove
-                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
                                                 <label
-                                                    class="col-lg-3 col-form-label">@lang('form-labels.product-special-offer')</label>
+                                                    class="col-lg-3 col-form-label">اقامتگاه شگفت انگیز</label>
                                                 <div class="col-lg-9">
                                                     <label class="form-check my-2">
                                                         <input class="form-check-input" type="checkbox" checked=""><span
-                                                            class="form-check-label">@lang('form-labels.product-special-this-product')</span>
+                                                            class="form-check-label">شگفت انگیز</span>
                                                     </label>
                                                 </div>
                                             </div>
@@ -268,7 +237,8 @@
                                     <div class="col-lg-9">
                                         <div CLASS="card-header bg-secondary text-white">Image</div>
                                         <div class="mb-4">
-                                            <label class="form-label" for="image">@lang('form-labels.product-image')</label>
+                                            <label class="form-label"
+                                                   for="image">تصاویر اقامتگاه</label>
                                             <input name="image" wire:model="image"
                                                    class="form-control @error('image') error-input-border @enderror"
                                                    id="image" type="file">
@@ -285,13 +255,17 @@
                                         <div></div>
                                     @endif
                                     @if($currentStep==2 || $currentStep==3)
-                                        <button type="button" class="btn btn-sm btn-secondary" wire:click="decreaseStep()">Back</button>
+                                        <button type="button" class="btn btn-sm btn-secondary"
+                                                wire:click="decreaseStep()">قبل
+                                        </button>
                                     @endif
                                     @if($currentStep==1 || $currentStep==2)
-                                        <button type="button" class="btn btn-sm btn-success" wire:click="increaseStep()">Next</button>
+                                        <button type="button" class="btn btn-sm btn-success"
+                                                wire:click="increaseStep()">بعد
+                                        </button>
                                     @endif
                                     @if($currentStep==3)
-                                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">ثبت</button>
                                     @endif
                                 </div>
                             </form>
@@ -301,8 +275,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </section>
 
