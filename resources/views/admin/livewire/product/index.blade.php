@@ -16,7 +16,7 @@
                                                 <div class="col-lg-9">
                                                     <input wire:model.defer="name"
                                                            class="form-control @error('name') error-input-border @enderror"
-                                                           name="name" id="name" type="text" placeholder="Type here">
+                                                           name="name" id="name" type="text" placeholder="نام اقامتگاه">
                                                 </div>
                                                 @foreach ($errors->get('name') as $message)
                                                     <span wire:loading.remove
@@ -121,8 +121,7 @@
                                                 <div class="col-lg-4">
                                                     <input wire:model.defer="discount" name="discount" id="discount"
                                                            class="form-control @error('discount') error-input-border @enderror"
-                                                           type="number"
-                                                           placeholder="012345678">
+                                                           type="number">
                                                 </div>
                                                 @foreach($errors->get('discount') as $message)
                                                     <span wire:loading.remove
@@ -133,11 +132,11 @@
                                                 <label class="col-lg-3 col-form-label"
                                                        for="description">توضیحات</label>
                                                 <div class="col-lg-4">
-                                                    <input wire:model.defer="description" name="description"
+                                                    <textarea wire:model.defer="description" name="description"
                                                            id="description"
                                                            class="form-control @error('description') error-input-border @enderror"
                                                            type="text"
-                                                           placeholder="012345678">
+                                                           placeholder="توضیحات لازم را یادداشت کنید"></textarea>
                                                 </div>
                                                 @foreach($errors->get('description') as $message)
                                                     <span wire:loading.remove
@@ -171,20 +170,19 @@
                                         </div>
                                         <section class="content-body p-xl-4">
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label" for="category_id">محیط
+                                                <label class="col-lg-3 col-form-label" for="environment_id">محیط
                                                     اقامتگاه</label>
-                                                <div class="col-lg-4"><small
-                                                        class="text-muted font-sm mb-10">انتخاب</small>
+                                                <div class="col-lg-4">
                                                     <select
                                                         class="form-select @error('environment_id') error-input-border @enderror"
                                                         name="environment_id" id="environment_id"
                                                         wire:model.defer="environment_id">
 
-                                                        <option>choose parent category</option>
+                                                        <option>انتخاب محیط اقامتگاه</option>
                                                         @foreach($environments as $environment)
                                                             <option
                                                                 value="{{$environment->id}}">
-                                                                {{@$environment->environment->name}}
+                                                                {{@$environment->name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -195,20 +193,18 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label"
-                                                       for="category_id">دسته بندی اقامتگاه</label>
-                                                <div class="col-lg-4"><small
-                                                        class="text-muted font-sm mb-10">انتخاب</small>
+                                                <label class="col-lg-3 col-form-label" for="category_id">دسته بندی اقامتگاه</label>
+                                                <div class="col-lg-4">
                                                     <select
                                                         class="form-select @error('category_id') error-input-border @enderror"
                                                         name="category_id" id="category_id"
                                                         wire:model.defer="category_id">
 
-                                                        <option>choose parent category</option>
+                                                        <option>انتخاب دسته بندی اقامتگاه </option>
                                                         @foreach($categories as $category)
                                                             <option
                                                                 value="{{$category->id}}">
-                                                                {{@$category->category->name}}
+                                                                {{@$category->name}}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -219,10 +215,9 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
-                                                <label
-                                                    class="col-lg-3 col-form-label">اقامتگاه شگفت انگیز</label>
+                                                <label class="col-lg-3 col-form-label">اقامتگاه شگفت انگیز</label>
                                                 <div class="col-lg-9">
-                                                    <label class="form-check my-2">
+                                                    <label class="form-check my-2"  for="status">
                                                         <input class="form-check-input" type="checkbox" checked=""><span
                                                             class="form-check-label">شگفت انگیز</span>
                                                     </label>
@@ -269,7 +264,6 @@
                                     @endif
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
