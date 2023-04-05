@@ -79,7 +79,7 @@ class Index extends Component
                 'image' => 'required| image'
             ]);
         }
-        Product::query()->create(
+        $product = Product::query()->create(
             [
                 'id' => $this->product_id,
                 'name' => $this->name,
@@ -105,7 +105,7 @@ class Index extends Component
             Image::make($image)->crop('300', '300')->save(public_path('images/products/' . $image_name));
         }
 
-        $product_id = $this->product_id;
+        $product_id = $product->id;
 
         File::query()->updateOrCreate(
             [

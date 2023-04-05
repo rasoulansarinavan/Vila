@@ -8,7 +8,7 @@
                             <form wire:submit.prevent="saveProduct(Object.fromEntries(new FormData($event.target)))">
                                 @if($currentStep==1)
                                     <div class="col-lg-9">
-                                        <div CLASS="card-header bg-secondary text-white">General Details</div>
+                                        <div CLASS="card-header bg-secondary text-white">اطلاعات اقامتگاه</div>
                                         <section class="content-body p-xl-4">
 
                                             <div class="row mb-4">
@@ -133,10 +133,10 @@
                                                        for="description">توضیحات</label>
                                                 <div class="col-lg-4">
                                                     <textarea wire:model.defer="description" name="description"
-                                                           id="description"
-                                                           class="form-control @error('description') error-input-border @enderror"
-                                                           type="text"
-                                                           placeholder="توضیحات لازم را یادداشت کنید"></textarea>
+                                                              id="description"
+                                                              class="form-control @error('description') error-input-border @enderror"
+                                                              type="text"
+                                                              placeholder="توضیحات لازم را یادداشت کنید"></textarea>
                                                 </div>
                                                 @foreach($errors->get('description') as $message)
                                                     <span wire:loading.remove
@@ -146,7 +146,8 @@
                                             <div class="row mb-4">
                                                 <label class="col-lg-3 col-form-label"
                                                        for="status">وضعیت اقامتگاه</label>
-                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">انتخاب وضعیت</small>
+                                                <div class="col-lg-4"><small class="text-muted font-sm mb-10">انتخاب
+                                                        وضعیت</small>
                                                     <select
                                                         class="form-select @error('status') error-input-border @enderror"
                                                         name="status" id="status" wire:model.defer="status">
@@ -155,7 +156,8 @@
                                                         <option value="2">عدم نمایش اقامتگاه</option>
                                                     </select>
                                                     @foreach($errors->get('status') as $message)
-                                                        <span wire:loading.remove class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                        <span wire:loading.remove
+                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -193,14 +195,15 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
-                                                <label class="col-lg-3 col-form-label" for="category_id">دسته بندی اقامتگاه</label>
+                                                <label class="col-lg-3 col-form-label" for="category_id">دسته بندی
+                                                    اقامتگاه</label>
                                                 <div class="col-lg-4">
                                                     <select
                                                         class="form-select @error('category_id') error-input-border @enderror"
                                                         name="category_id" id="category_id"
                                                         wire:model.defer="category_id">
 
-                                                        <option>انتخاب دسته بندی اقامتگاه </option>
+                                                        <option>انتخاب دسته بندی اقامتگاه</option>
                                                         @foreach($categories as $category)
                                                             <option
                                                                 value="{{$category->id}}">
@@ -217,7 +220,7 @@
                                             <div class="row mb-4">
                                                 <label class="col-lg-3 col-form-label">اقامتگاه شگفت انگیز</label>
                                                 <div class="col-lg-9">
-                                                    <label class="form-check my-2"  for="status">
+                                                    <label class="form-check my-2" for="status">
                                                         <input class="form-check-input" type="checkbox" checked=""><span
                                                             class="form-check-label">شگفت انگیز</span>
                                                     </label>
@@ -230,7 +233,7 @@
                                 @endif
                                 @if($currentStep==3)
                                     <div class="col-lg-9">
-                                        <div CLASS="card-header bg-secondary text-white">Image</div>
+                                        <div CLASS="card-header bg-secondary text-white">تصویر اقامتگاه</div>
                                         <div class="mb-4">
                                             <label class="form-label"
                                                    for="image">تصاویر اقامتگاه</label>
@@ -245,7 +248,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                <div class="action-buttons d-flex justify-content-between bg-white pt-2 pb-2">
+                                <div class="action-buttons d-flex justify-content-between pt-2 pb-2">
                                     @if($currentStep==1)
                                         <div></div>
                                     @endif
