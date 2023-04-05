@@ -17,7 +17,7 @@ class Index extends Component
 {
     use WithFileUploads;
 
-    public $name = '', $wc_en, $wc_fa, $bath, $single_bed, $double_bed, $capacity, $price, $discount, $description, $status, $environment_id, $category_id, $image, $product_id;
+    public $name = '', $wc_en, $wc_fa, $bath, $single_bed, $double_bed, $capacity, $price, $discount, $description, $status, $environment_id, $category_id, $images = [], $product_id;
 
     public $totalSteps = 3;
     public $currentStep = 1;
@@ -76,7 +76,7 @@ class Index extends Component
         $this->resetErrorBag();
         if ($this->currentStep == 3) {
             $this->validate([
-                'image' => 'required| image'
+                'images.*' => 'required| image'
             ]);
         }
         $product = Product::query()->create(
@@ -97,25 +97,23 @@ class Index extends Component
                 'category_id' => $this->category_id,
                 'special_offer' => 1
             ]);
-        $image = $this->image;
         $image_name = '';
-        if ($image) {
+        $product_id = $product->id;
+        foreach ($this->images as $image) {
+
             $extension = $image->extension();
             $image_name = 'product_' . Str::random(10) . time() . '.' . $extension;
             Image::make($image)->crop('300', '300')->save(public_path('images/products/' . $image_name));
+
+            File::query()->create(
+                [
+                    'product_id' => $product_id,
+                    'type' => 'product',
+                    'name' => $image_name
+                ]
+            );
         }
 
-        $product_id = $product->id;
-
-        File::query()->updateOrCreate(
-            [
-                'product_id' => $product_id,
-                'type' => 'product'
-            ],
-            [
-                'name' => $image_name,
-            ]
-        );
     }
 
     public function render()

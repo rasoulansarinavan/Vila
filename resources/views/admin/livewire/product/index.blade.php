@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <div class="row gx-5">
                         <div class="tab-content" id="animateLineContent-4">
-                            <form wire:submit.prevent="saveProduct(Object.fromEntries(new FormData($event.target)))">
+                            <form wire:submit.prevent="saveProduct(Object.fromEntries(new FormData($event.target)))" enctype="multipart/form-data">
                                 @if($currentStep==1)
                                     <div class="col-lg-9">
                                         <div CLASS="card-header bg-secondary text-white">اطلاعات اقامتگاه</div>
@@ -235,16 +235,13 @@
                                     <div class="col-lg-9">
                                         <div CLASS="card-header bg-secondary text-white">تصویر اقامتگاه</div>
                                         <div class="mb-4">
-                                            <label class="form-label"
-                                                   for="image">تصاویر اقامتگاه</label>
-                                            <input name="image" wire:model="image"
-                                                   class="form-control @error('image') error-input-border @enderror"
-                                                   id="image" type="file">
-                                            @foreach ($errors->get('image') as $message)
-                                                <span wire:loading.remove
-                                                      class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                            <label class="form-label" for="images">تصاویر اقامتگاه</label>
+                                            <input name="images" wire:model="images"
+                                                   class="form-control @error('images.*') error-input-border @enderror" id="images" type="file" multiple>
+                                            @foreach ($errors->get('images') as $message)
+                                                <span wire:loading.remove class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
                                             @endforeach
-                                            <div wire:loading wire:target="image">Uploading...</div>
+                                            <div wire:loading wire:target="images">Uploading...</div>
                                         </div>
                                     </div>
                                 @endif
