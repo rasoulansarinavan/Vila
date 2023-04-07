@@ -12,8 +12,13 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('reserve_date');
+            $table->integer('start_date');
+            $table->integer('end_date');
             $table->integer('product_id');
             $table->integer('user_id');
+            $table->integer('passenger');
+            $table->integer('reserve_status');
             $table->timestamps();
         });
     }
