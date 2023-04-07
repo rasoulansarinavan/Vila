@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/admin/assets/css/toastr.min.css">
     <title>Ecom - Marketplace Dashboard Template</title>
     @livewireStyles
+    @powerGridStyles
 </head>
 <body class="dark">
 <div class="screen-overlay"></div>
@@ -104,5 +105,6 @@
     })
 </script>
 @livewireScripts
+@powerGridScripts
 </body>
 </html>
