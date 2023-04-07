@@ -14,9 +14,11 @@
     </div>
     <nav>
         <ul class="menu-aside">
-            <li class="menu-item active {{$rout_name=='admin.index' ? 'active' : ''}}"><a class="menu-link" href="{{route('admin.index')}}"><i
+            <li class="menu-item active {{$rout_name=='admin.index' ? 'active' : ''}}"><a class="menu-link"
+                                                                                          href="{{route('admin.index')}}"><i
                         class="icon material-icons md-home"></i><span class="text">Dashboard</span></a></li>
-            <li class="menu-item has-submenu {{$rout_name=='admin.products.index' ? 'active' : ''}}"><a class="menu-link" href="page-products-list.html">
+            <li class="menu-item has-submenu {{$rout_name=='admin.products.index' ? 'active' : ''}}"><a
+                    class="menu-link" href="page-products-list.html">
                     <i class="icon material-icons md-add_business"></i><span class="text">اقامتگاه</span></a>
                 <div class="submenu">
                     <a href="{{route('admin.products.index')}}">افزودن اقامتگاه</a>
@@ -36,7 +38,8 @@
                     <a href="{{route('admin.environments')}}">افزودن محیط</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu {{$rout_name=='admin.orders' ? 'active' : ''}}"><a class="menu-link" href="page-orders-1.html"><i
+            <li class="menu-item has-submenu {{$rout_name=='admin.orders' ? 'active' : ''}}"><a class="menu-link"
+                                                                                                href="page-orders-1.html"><i
                         class="icon material-icons md-border_bottom"></i><span class="text">سفارشات</span></a>
                 <div class="submenu">
                     <a href="{{route('admin.orders')}}">لیست سفارشات</a>
@@ -48,6 +51,14 @@
                         href="page-sellers-list.html">Sellers list</a><a href="page-seller-detail.html">Seller
                         profile</a></div>
             </li>
+
+            <li class="menu-item has-submenu {{$rout_name=='admin.users' ? 'active' : ''}}"><a class="menu-link"><i
+                        class="icon material-icons md-store"></i><span class="text">کاربران</span></a>
+                <div class="submenu">
+                    <a href="{{route('admin.users.index')}}">لیست کاربران</a>
+                </div>
+            </li>
+
             <li class="menu-item has-submenu"><a class="menu-link" href="page-form-product-1.html"><i
                         class="icon material-icons md-add_box"></i><span class="text">Add product</span></a>
                 <div class="submenu"><a href="page-form-product-1.html">Add product 1</a><a
