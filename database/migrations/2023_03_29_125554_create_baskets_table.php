@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('baskets', function (Blueprint $table) {
             $table->id();
             $table->integer('reserve_date');
             $table->integer('start_date');
@@ -18,7 +18,6 @@ return new class extends Migration {
             $table->integer('product_id');
             $table->integer('user_id');
             $table->integer('passenger');
-            $table->integer('reserve_status');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('baskets');
     }
 };
