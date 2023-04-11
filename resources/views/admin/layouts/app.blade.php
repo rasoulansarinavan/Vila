@@ -16,7 +16,7 @@
     @livewireStyles
     @powerGridStyles
 </head>
-<body class="dark">
+<body>
 <div class="screen-overlay"></div>
 
 <livewire:admin.layouts.side-bar/>
