@@ -53,7 +53,7 @@
             </li>
 
             <li class="menu-item has-submenu {{$rout_name=='admin.users' ? 'active' : ''}}"><a class="menu-link"><i
-                        class="icon material-icons md-store"></i><span class="text">کاربران</span></a>
+                        class="icon material-icons md-person_pin"></i><span class="text">کاربران</span></a>
                 <div class="submenu">
                     <a href="{{route('admin.users.index')}}">لیست کاربران</a>
                 </div>
